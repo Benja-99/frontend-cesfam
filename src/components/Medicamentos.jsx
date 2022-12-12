@@ -3,10 +3,8 @@ import '../styles/login.css';
 import Layout from './Layout';
 import Navbar from './Navbar';
 import { PlusCircleIcon} from '@primer/octicons-react'
-import {datos, pre} from '../datos';
 import {Fila, FilaPre} from './Fila';
-import { gql } from 'apollo-server-express';
-import { useQuery } from '@apollo/client';
+import { useQuery, gql } from '@apollo/client';
 
 const GET_MEDICAMENTOS = gql`
     query getMedicamentosQuery {
@@ -25,18 +23,50 @@ const GET_MEDICAMENTOS = gql`
     }
 `
 
-function GetMedicamentos() {
+const GET_PRESCRIPCIONES = gql`
+    query getPrescripcionesQuery {
+        getPrescripciones {
+            cesfam {
+              nombre
+            }
+            id
+            medicamentos {
+              nombre
+              cantidad
+            }
+            medico {
+              nombre
+            }
+            paciente {
+              nombre
+            }
+          }
+    }
+`
+
+function DisplayMedicamentos() {
     const { loading, error, data } = useQuery(GET_MEDICAMENTOS)
 
     if(loading) return null
     if(error) return `Error! ${error}`
 
-    return data
+    return data.getMedicamentos.map(({ id, cantidad, codigo, comp, contenido, desc, fab, gramaje, nombre, tipo }) => (
+        <Fila nombre={nombre} cantidad={cantidad} codigo={codigo} id={id}/>
+    
+    ))
+}
+
+function DisplayPrescripciones(){
+    const { loading, error, data } = useQuery(GET_PRESCRIPCIONES)
+    if(loading) return null
+    if(error) return `Error! ${error}`
+    return data.getPrescripciones.map(({ cesfam, id, medicamentos, medico, paciente}) => (
+        <FilaPre medico={medico.nombre} paciente={paciente.nombre} medicamento={medicamentos}/>
+    ))
+
 }
 const Medicamentos = () => {
 
-    datos = GetMedicamentos()
-    console.log(datos)
     return(
         <Layout>
             <Navbar></Navbar>
@@ -73,11 +103,12 @@ const Medicamentos = () => {
                     </thead>
                     <tbody>
                         {
-                            datos.map(row => {
-                                return (
-                                    <Fila nombre={row.nombre} cantidad={row.stock} codigo={row.codigo}/>
-                                )
-                            })
+                            DisplayMedicamentos()
+                            // datos.map(row => {
+                            //     return (
+                            //         <Fila nombre={row.nombre} cantidad={row.stock} codigo={row.codigo}/>
+                            //     )
+                            // })
                         }
                     </tbody>
                 </table>
@@ -104,11 +135,12 @@ const Medicamentos = () => {
                     </thead>
                     <tbody>
                         {
-                            pre.map(row => {
-                                return (
-                                    <FilaPre medico={row.medico} paciente={row.paciente} medicamento={row.medicamento} cantidad={row.cantidad}/>
-                                )
-                            })
+                            DisplayPrescripciones()
+                            // pre.map(row => {
+                            //     return (
+                            //         <FilaPre medico={row.medico} paciente={row.paciente} medicamento={row.medicamento} cantidad={row.cantidad}/>
+                            //     )
+                            // })
                         }
                     </tbody>
                 </table>
