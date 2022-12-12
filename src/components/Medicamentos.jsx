@@ -87,12 +87,12 @@ const Medicamentos = () => {
                 </table>
                 <br />
                 <div className='row'>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-md-4'>
                     </div>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-md-4'>
                         <button type="submit" class="btn btn-success">Generar Informe Medicamentos</button>
                     </div>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-md-4'>
                     </div>
                 </div>
                 

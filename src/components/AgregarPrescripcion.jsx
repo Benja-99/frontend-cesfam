@@ -135,12 +135,12 @@ const AgregarPrescripcion = () => {
                 </div>
                 <br />
                 <div className='row'>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-xl-4'>
                     </div>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-xl-4'>
                         <button type="submit" className="btn btn-success">Agregar</button>
                     </div>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-xl-4'>
                     </div>
                 </div>
             </div>

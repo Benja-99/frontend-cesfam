@@ -143,10 +143,10 @@ const AgregarMedicamento = () => {
                 </div>
                 <br />
                 <div className='row'>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-lg-4'>
                         <h2 className='title'>Gramaje</h2>
                     </div>
-                    <div className='col-6 col-sm-4'>
+                    <div className='col-6 col-lg-4'>
                         <input className="form-control" type="text" placeholder="Gramaje" value={gramaje} onChange={(e) => setGramaje(e.target.value)} aria-label="default input example"/>
                     </div>
                 </div>
