@@ -14,7 +14,7 @@ const Entrega = () => {
                         <h2 className='title'>Nombre Medicamento Entregado</h2>
                     </div>
                     <div className='col-6 col-sm-4'>
-                        <input class="form-control" type="text" placeholder="Nombre" aria-label="default input example"/>
+                        <input className="form-control" type="text" placeholder="Nombre" aria-label="default input example"/>
                     </div>
                 </div>
                 <br />
@@ -23,7 +23,7 @@ const Entrega = () => {
                         <h2 className='title'>Codigo</h2>
                     </div>
                     <div className='col-6 col-sm-4'>
-                        <input class="form-control" type="text" placeholder="Codigo" aria-label="default input example"/>
+                        <input className="form-control" type="text" placeholder="Codigo" aria-label="default input example"/>
                     </div>
                 </div>
                 <br />
@@ -31,7 +31,7 @@ const Entrega = () => {
                     <div className='col-6 col-sm-4'>
                     </div>
                     <div className='col-6 col-sm-4'>
-                        <button type="submit" class="btn btn-success">Agregar</button>
+                        <button type="submit" className="btn btn-success">Agregar</button>
                     </div>
                     <div className='col-6 col-sm-4'>
                     </div>

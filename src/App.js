@@ -2,11 +2,11 @@ import './App.css';
 import React from 'react';
 import Medicamentos from './components/Medicamentos';
 import Home from './components/Home';
-import Agregar from './components/agregar';
+import Agregar from './components/AgregarMedicamento';
 import Preinscripcion from './components/Preinscripcion';
 import Entrega from './components/Entrega';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import PreEntrega from './components/agregarPre';
+import PreEntrega from './components/AgregarPrescripcion';
 import Recetas from './components/recetas';
 
 

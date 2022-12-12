@@ -4,6 +4,7 @@ import { useState } from 'react';
 import '../styles/login.css';
 import Layout from './Layout';
 import Navbar from './Navbar';
+import { Redirect } from "react-router-dom";
 
 
 const ADD_MEDICAMENTOS = gql`
@@ -16,7 +17,7 @@ const ADD_MEDICAMENTOS = gql`
     }
 `
 
-const Agregar = () => {
+const AgregarMedicamento = () => {
     const [nombre, setNombre] = useState("")
     const [codigo, setCodigo] = useState("")
     const [descripcion, setDescripcion] = useState("")
@@ -26,27 +27,47 @@ const Agregar = () => {
     const [contenido, setContenido] = useState("")
     const [cantidad, setCantidad] = useState("")
     const [gramaje, setGramaje] = useState("")
+    
+    const [addMedicamento] = useMutation(ADD_MEDICAMENTOS)
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     return(
-            
 
-    //     )
-    // }
 
-    const AddMedicamento = () => {
-        const [addMedicamento, {data, loading, error}] = useMutation(ADD_MEDICAMENTOS)
-        if (loading) return 'Submitting...';
-        if (error) return `Submission error! ${error.message}`;
-        addMedicamento({variables: {nombre: nombre, codigo: codigo, descripcion: descripcion, fabricante: fabricante, tipo: tipo, componentes: componentes, contenido: contenido, cantidad: cantidad, gramaje: gramaje}})
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const input = {
+            nombre: nombre,
+            codigo: codigo,
+            desc: descripcion,
+            fab: fabricante,
+            tipo: tipo,
+            comp: componentes,
+            contenido: contenido,
+            cantidad: parseInt(cantidad),
+            gramaje: parseInt(gramaje)
+        }
+        addMedicamento({ variables: { input }})
+
+        setNombre('')
+        setCodigo('')
+        setDescripcion('')
+        setFabricante('')
+        setTipo('')
+        setComponentes('')
+        setContenido('')
+        setCantidad('')
+        setGramaje('')
     }
 
+        // console.log("wea");
+        // if (loading) console.log("Submitting")
+        // if (error) console.log(`Submission error! ${error.message}`);
+        // await addMedicamento({variables: {nombre: nombre, codigo: codigo, descripcion: descripcion, fabricante: fabricante, tipo: tipo, componentes: componentes, contenido: contenido, cantidad: cantidad, gramaje: gramaje}})
+        // await console.log(data);
     return(
         <Layout>
             <Navbar></Navbar>
             <br />
-            <form onSubmit={(e) => AddMedicamento()}>
+            <form onSubmit={handleSubmit}>
             <div className='container-fluid'>
                 
                 <div className='row'>
@@ -134,7 +155,7 @@ const Agregar = () => {
                     <div className='col-6 col-sm-4'>
                     </div>
                     <div className='col-6 col-sm-4'>
-                        <button type="submit" className="btn btn-success">Agregar</button>
+                        <button type="submit" className="btn btn-success" >Agregar</button>
                     </div>
                     <div className='col-6 col-sm-4'>
                     </div>
@@ -145,4 +166,4 @@ const Agregar = () => {
     )
 }
 
-export default Agregar;
+export default AgregarMedicamento;

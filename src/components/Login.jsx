@@ -10,10 +10,10 @@ const Login = () => {
 				<form action="/" className="form">
                     <label for="exampleInputEmail1" className="form-label">Nombre de usuario</label>
                     <input type="name" className="form-control" id="exampleInputEmail1"/>
-					<label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1"/>
+					<label for="exampleInputPassword1" className="form-label">Contraseña</label>
+                    <input type="password" className="form-control" id="exampleInputPassword1"/>
                     <br />
-					<button type="submit" class="btn btn-success">Confirmar</button>
+					<button type="submit" className="btn btn-success">Confirmar</button>
 				</form>
 			</div>
 		</div>

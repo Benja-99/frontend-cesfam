@@ -60,7 +60,7 @@ class Fila extends React.Component {
                 {this.state.isOpen ?
                     <>
                     <td><input type="number" value={cantidad}/></td>
-                    <td><button type="submit" class="btn btn-success" onClick={this.closeSumar}> Sumar </button></td>
+                    <td><button type="submit" className="btn btn-success" onClick={this.closeSumar}> Sumar </button></td>
                     </>
                     
                 :
